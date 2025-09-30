@@ -1,4 +1,4 @@
-const Alpaca = require("@alpacahq/alpaca-trade-api");
+import Alpaca from '@alpacahq/alpaca-trade-api';
 
 export async function runTradingLogic(user) {
   if (!user.alpaca_key || !user.alpaca_secret) {
