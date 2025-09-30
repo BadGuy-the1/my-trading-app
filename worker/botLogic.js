@@ -20,7 +20,7 @@ export async function runTradingLogic(user) {
     console.error('Alpaca error for user', user.id, err.message || err);
   }
 }
-require("dotenv").config();
+
 
 
 const axios = require("axios");
