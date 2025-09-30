@@ -23,8 +23,8 @@ export async function runTradingLogic(user) {
 
 
 
-const axios = require("axios");
-const WebSocket = require('ws');
+import axios from 'axios';
+import WebSocket from 'ws';
 
 const sendTelegramMessage = async (message) => {
     const chatIds = [
