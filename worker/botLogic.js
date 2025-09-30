@@ -22,7 +22,7 @@ export async function runTradingLogic(user) {
 }
 require("dotenv").config();
 
-const Alpaca = require("@alpacahq/alpaca-trade-api");
+
 const axios = require("axios");
 const WebSocket = require('ws');
 
