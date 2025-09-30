@@ -1,4 +1,10 @@
-import alpaca from '@alpacahq/alpaca-trade-api';
+
+
+
+
+const Alpaca = require("@alpacahq/alpaca-trade-api");
+const axios = require("axios");
+const WebSocket = require('ws');
 
 export async function runTradingLogic(user) {
   if (!user.alpaca_key || !user.alpaca_secret) {
@@ -22,10 +28,6 @@ export async function runTradingLogic(user) {
 }
 
 
-
-import axios from 'axios';
-import WebSocket from 'ws';
-
 const sendTelegramMessage = async (message) => {
     const chatIds = [
         process.env.TELEGRAM_CHAT_ID_PRIVATE, // la tua chat privata
@@ -46,6 +48,13 @@ const sendTelegramMessage = async (message) => {
         }
     }
 };
+
+ sendTelegramMessage(`🤖 SignalBot Inizio Analisi 🤖`);
+const alpaca = new Alpaca({
+    keyId: process.env.APCA_API_KEY_ID,
+    secretKey: process.env.APCA_API_SECRET_KEY,
+    paper: true,
+});
 
 const getTradableCryptos = async () => {
     try {
@@ -926,3 +935,4 @@ const fetchCryptoBarsAndApplyStrategy = async (tradableCryptos) => {
     // Initialize the trading strategy for each tradable crypto
     setInterval(() => fetchCryptoBarsAndApplyStrategy(tradableCryptos), 300000);
 })();
+
