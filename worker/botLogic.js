@@ -8,20 +8,7 @@ const WebSocket = require('ws');
 
 
 
-  const alpaca = new Alpaca({
-    keyId: user.alpaca_key,
-    secretKey: user.alpaca_secret,
-    paper: true,
-    
-  });
 
-  try {
-    const account = await alpaca.getAccount();
-    console.log('User', user.id, 'account status', account.status);
-  } catch (err) {
-    console.error('Alpaca error for user', user.id, err.message || err);
-  }
-}
 
 
 const sendTelegramMessage = async (message) => {
