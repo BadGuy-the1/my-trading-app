@@ -1,11 +1,8 @@
 {
   "name": "trading-worker",
   "version": "1.0.0",
-  
-
+  "type": "commonjs",
   "main": "index.js",
-  "type": "commonjs",   ← add this line or remove the old one
-  
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +23,11 @@
     "p-limit": "^3.1.0",
     "technicalindicators": "^3.1.0",
     "winston": "^3.15.0",
+    "ws": "^8.18.0"
+  },
+  "description": ""
+}
+
     "ws": "^8.18.0"
   },
   "description": ""
