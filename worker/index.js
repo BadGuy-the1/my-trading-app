@@ -1,23 +1,31 @@
-import { getAllActiveUsers } from '../db/db.js';
-import { runTradingLogic } from './botLogic.js';
+// index.js
+const express = require("express");
+const dotenv = require("dotenv");
+const { startBot } = require("./botLogic.js");
 
-console.log('Worker started');
+dotenv.config();
 
-async function loopOnce() {
-  try {
-    const users = await getAllActiveUsers();
-    console.log(`Found ${users.length} users`);
-    for (const u of users) {
-      try {
-        await runTradingLogic(u);
-      } catch (err) {
-        console.error('Error running user bot', u.id, err);
-      }
-    }
-  } catch (err) {
-    console.error('Worker main loop error', err);
-  }
-}
+const app = express();
 
-loopOnce();
-setInterval(loopOnce, 5 * 60 * 1000);
+// Simple home route
+app.get("/", (req, res) => {
+  res.send("🚀 Trading bot + API are running!");
+});
+
+// Optional: API endpoint for bot status
+app.get("/status", (req, res) => {
+  res.json({
+    status: "running",
+    time: new Date().toISOString()
+  });
+});
+
+// Start your trading bot logic
+startBot();
+
+// Render needs to detect a port
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`🌐 Server running on port ${PORT}`);
+});
+
