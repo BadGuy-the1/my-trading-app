@@ -42,7 +42,7 @@ function startBot() {
   });
 
   console.log("🤖 Bot started and connected to Alpaca");
-}
+
 const getTradableCryptos = async () => {
     try {
         const assets = await alpaca.getAssets({
@@ -922,5 +922,5 @@ const fetchCryptoBarsAndApplyStrategy = async (tradableCryptos) => {
     // Initialize the trading strategy for each tradable crypto
     setInterval(() => fetchCryptoBarsAndApplyStrategy(tradableCryptos), 300000);
 })();
-
+}
 module.exports = { startBot };
