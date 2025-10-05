@@ -33,11 +33,15 @@ const sendTelegramMessage = async (message) => {
 };
 
  sendTelegramMessage(`🤖 SignalBot Inizio Analisi 🤖`);
-const alpaca = new Alpaca({
-    keyId: process.env.APCA_API_KEY_ID,
-    secretKey: process.env.APCA_API_SECRET_KEY,
-    paper: true,
-});
+
+function startBot() {
+  const alpaca = new Alpaca({
+    keyId: process.env.ALPACA_KEY,
+    secretKey: process.env.ALPACA_SECRET,
+    paper: true, // set to false for live trading
+  });
+
+  console.log("🤖 Bot started and connected to Alpaca");
 
 const getTradableCryptos = async () => {
     try {
