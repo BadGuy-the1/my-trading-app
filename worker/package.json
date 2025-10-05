@@ -4,6 +4,7 @@
   
 
   "main": "index.js",
+  "type": "commonjs",   ← add this line or remove the old one
   
   "scripts": {
     "start": "node index.js",
