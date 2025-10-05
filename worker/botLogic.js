@@ -6,11 +6,7 @@ const Alpaca = require("@alpacahq/alpaca-trade-api");
 const axios = require("axios");
 const WebSocket = require('ws');
 
-export async function runTradingLogic(user) {
-  if (!user.alpaca_key || !user.alpaca_secret) {
-    console.log('User', user.id, 'has no keys, skipping');
-    return;
-  }
+
 
   const alpaca = new Alpaca({
     keyId: user.alpaca_key,
