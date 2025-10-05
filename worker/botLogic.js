@@ -1,7 +1,3 @@
-
-
-
-
 const Alpaca = require("@alpacahq/alpaca-trade-api");
 const axios = require("axios");
 const WebSocket = require('ws');
@@ -34,14 +30,17 @@ const sendTelegramMessage = async (message) => {
 
  sendTelegramMessage(`🤖 SignalBot Inizio Analisi 🤖`);
 
-function startBot() {
-  const alpaca = new Alpaca({
-    keyId: process.env.ALPACA_KEY,
-    secretKey: process.env.ALPACA_SECRET,
-    paper: true, // set to false for live trading
-  });
+let intervals = [];
 
+const alpaca = new Alpaca({
+  keyId: process.env.ALPACA_KEY,
+  secretKey: process.env.ALPACA_SECRET,
+  paper: true, // set to false for live trading
+});
+
+const startBot = () => {
   console.log("🤖 Bot started and connected to Alpaca");
+};
 
 const getTradableCryptos = async () => {
     try {
@@ -910,6 +909,8 @@ const fetchCryptoBarsAndApplyStrategy = async (tradableCryptos) => {
     ws.on('error', (error) => {
         console.error('WebSocket error:', error);
     });
+
+    startBot();
 
     setInterval(() => {
         console.clear();
