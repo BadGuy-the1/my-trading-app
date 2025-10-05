@@ -922,5 +922,5 @@ const fetchCryptoBarsAndApplyStrategy = async (tradableCryptos) => {
     // Initialize the trading strategy for each tradable crypto
     setInterval(() => fetchCryptoBarsAndApplyStrategy(tradableCryptos), 300000);
 })();
-}
+
 module.exports = { startBot };
